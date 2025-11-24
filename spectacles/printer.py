@@ -146,7 +146,7 @@ def print_sql_error(
     model: str,
     explore: str,
     message: str,
-    sql: str | None,
+    sql: Optional[str],
     log_dir: str,
     dimension: Optional[str] = None,
     lookml_url: Optional[str] = None,
