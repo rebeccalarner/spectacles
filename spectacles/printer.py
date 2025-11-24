@@ -146,7 +146,7 @@ def print_sql_error(
     model: str,
     explore: str,
     message: str,
-    sql: str,
+    sql: Optional[str],
     log_dir: str,
     dimension: Optional[str] = None,
     lookml_url: Optional[str] = None,
@@ -163,8 +163,11 @@ def print_sql_error(
     if lookml_url:
         logger.info("\n" + f"LookML: {lookml_url}")
 
-    file_path = log_sql_error(model, explore, sql, log_dir, dimension)
-    logger.info("\n" + f"Test SQL: {file_path}")
+    if sql:
+        file_path = log_sql_error(model, explore, sql, log_dir, dimension)
+        logger.info("\n" + f"Test SQL: {file_path}")
+    else:
+        logger.info("\n" + "Test SQL: [SQL not available]")
 
 
 def print_validation_result(
